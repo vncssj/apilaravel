@@ -20,8 +20,7 @@ class CategoriasController extends Controller
     public function saveAdd(Request $request)
     {
         if(Categorias::create($request->all())){
-            $_SESSION['mensagem'] = "Categoria Adicionada com Sucesso!";
-        return view("Categorias.add");
+        return view("Categorias.index")->with("message: Categoria Adicionada com Sucesso!");
         }
     }
 }

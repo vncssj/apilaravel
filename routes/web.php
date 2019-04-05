@@ -19,11 +19,13 @@ Route::group(['prefix' => 'users'], function(){
     Route::get('/','UsersController@index');
     Route::get('index','UsersController@index');
     Route::get('add','UsersController@add');
-    Route::post('add','UsersController@save');
+    Route::post('add','UsersController@saveAdd');
 });
 Route::group(['prefix' => 'produtos'], function(){
     Route::get('/', 'ProdutosController@index');
     Route::get('index', 'ProdutosController@index');
+    Route::get('add', 'ProdutosController@add');
+    Route::post('add', 'ProdutosController@saveAdd');
 });
 Route::group(['prefix' => 'categorias'], function(){
     Route::get('/', 'CategoriasController@index');

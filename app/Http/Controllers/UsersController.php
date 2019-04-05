@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Users;
+use App\Hash;
 class UsersController extends Controller
 {
     public function index()
@@ -18,8 +19,13 @@ class UsersController extends Controller
         return view('users.add');
     }
     public function saveAdd(Request $request){
-        Users::create($request->all());
-        $_SESSION['mensagem'] = "Usuário salvo com sucesso!";
+
+        Users::create([
+        'nome' => $request->all()['nome'],
+        'login' => $request->all()['login'],
+        'email' => $request->all()['email'],
+        'senha' => bcrypt($request->all()['senha'])
+        ]);
         return view('users.add');
     }
 }
